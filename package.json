@@ -1,0 +1,19 @@
+{
+  "name": "inzynieriainternetu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.3.9",
+    "mongose": "0.0.2-security",
+    "swagger-client": "^3.8.22"
+  }
+}
