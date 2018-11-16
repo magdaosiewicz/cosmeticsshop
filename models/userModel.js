@@ -18,9 +18,9 @@ const UserSchema  = new Schema({
     surname : {type: String},
     username : {type: String},
     password: {type: String},
-    deliveryAddress : {type: String},
     orders: {type: [OrderSchema], required: false},
-    bag: {type: Schema.Types.ObjectId, ref: "Bag"}
+    bag: {type: Schema.Types.ObjectId, ref: "Bag"},
+    address: {type: Schema.Types.ObjectId, required: true, ref: "Address"}
 });
 
 module.exports = mongoose.model('Users', UserSchema);

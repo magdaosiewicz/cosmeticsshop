@@ -13,11 +13,11 @@ exports.addProduct = function (req, res) {
     User.findById(req.params.id, req.body).then(function (user) {
         Bag.findByIdAndUpdate(user.bag).then(function (bag) {
             Product.findById(req.params.id_product, req.body).then(function (product) {
-                bag.products.push(product);
+                bag.products.add(product);
                 bag.cost += product.price;
                 bag.save().then(function () {
-                    Bag.findOne(user.bag).then(function (bagUpdated) {
-                        res.send("The product was added to your bag. \n\n\n" + bagUpdated)
+                    Bag.findOne(user.bag).then(function (bag) {
+                        res.send("The product was added to your bag" +bag.products)
                     })
 
                 });

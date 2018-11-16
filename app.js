@@ -7,6 +7,7 @@ const product = require('./routes/productRoute'); // Imports routes for the prod
 const user = require('./routes/userRoute');
 const order = require('./routes/orderRoute');
 const bag = require('./routes/bagRoute');
+const address = require('./routes/addressRoute');
 /////////////////////////////////////////////////////////////////////////
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/products', product);
 app.use('/users', user);
 app.use('/orders', order);
 app.use('/bags', bag);
+app.use('/addresses', address);
 app.use(express.static('views'));
 
 let port = 1234;

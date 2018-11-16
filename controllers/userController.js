@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
 const Bag = require('../models/bagModel');
-
+const Address = require('../models/addressModel');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
@@ -24,13 +24,23 @@ exports.userCreate = function (req, res) {
     });
     bag.save()
 
+    let address=new Address({
+        country: req.body.country,
+        city: req.body.city,
+        streetAddress: req.body.streetAddress,
+        houseNumber: req.body.houseNumber,
+        province: req.body.province,
+        postCode: req.body.postCode
+    });
+    address.save();
+
     let user = new User({
         name: req.body.name,
         surname: req.body.surname,
         username: req.body.username,
         password: req.body.password,
-        deliveryAddress: req.body.deliveryAddress,
         bag: bag,
+        address: address,
         orders: [{                                                                  //tez ma zaincializowan eod razu id a chcialam zeb ytylko kosz mial
             }]
     });
