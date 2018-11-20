@@ -20,7 +20,7 @@ const UserSchema  = new Schema({
     password: {type: String},
     orders: {type: [OrderSchema], required: false},
     bag: {type: Schema.Types.ObjectId, ref: "Bag"},
-    address: {type: Schema.Types.ObjectId, required: true, ref: "Address"}
+    address: {type: Schema.Types.ObjectId, required: false, ref: "Address"}
 });
 
 module.exports = mongoose.model('Users', UserSchema);

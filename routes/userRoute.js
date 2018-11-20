@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 
 
 router.get('/test', userController.test);
+router.get('/getUsers', userController.getUsers);
 router.post('/create', userController.userCreate);
 router.put('/:id/update', userController.userUpdate);
 //router.put('/:id/:id_product/updateBag', userController.addProductToTheBag);

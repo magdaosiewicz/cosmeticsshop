@@ -1,0 +1,43 @@
+<head xmlns:width="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
+  <!--<meta charset="UTF-8">-->
+  <!--<title>cosmetics shop</title>-->
+  <!--<link rel="stylesheet" href="users.component.css" type="text/css">-->
+
+</head>
+<body>
+
+<div id="page">
+<header>
+
+  <nav class="sticky">
+    <ul>
+      <li><a href="#"> Create an account </a></li>
+      <li><a href="3"> Sign in </a></li>
+    </ul>
+  </nav>
+
+
+  <div>
+  <ul class = navbar>
+
+
+    <li> <div>  <img src="../../assets/logo.PNG"> </div>  </li>
+    <li><a href="#"> Sign in </a></li>
+    <li><a href="#"> Sign in </a></li>
+    <li><a href="#"> Sign in </a></li>
+    <li><a href="#"> Sign in </a></li>
+    <li><a href="3"> Sign in </a></li>
+  </ul>
+  </div>
+
+
+
+</header>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+  <div *ngFor="let user of users">
+      {{user.name}}
+  </div>
+
+
+</div>
+</body>
