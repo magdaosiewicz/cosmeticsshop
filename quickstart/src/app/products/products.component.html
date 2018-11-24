@@ -1,0 +1,15 @@
+<div *ngFor="let product of products">
+
+  <div>
+    <br><br>
+    {{product.nameOfProduct}}
+    {{product.category}}
+    {{product.aboutProduct}}
+    {{product.ingredients}}
+    {{product.price}}
+    {{product.recommendation}}
+
+    <input type="button" value="deleteProdyct" (click)="deleteProduct(product._id)">
+
+  </div>
+</div>

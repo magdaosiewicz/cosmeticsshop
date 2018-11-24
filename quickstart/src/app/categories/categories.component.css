@@ -1,0 +1,29 @@
+a{
+  text-decoration: none;
+  color: darkgray;
+
+}
+ul{
+  list-style: none;
+}
+
+.navbar{
+  margin-top: 4.5%;
+  float: left;
+  width: 53%;
+  margin-left: 6.5%;
+
+}
+.navbar > ul {
+  display: block;
+  float: left;
+  list-style: none;
+}
+.navbar > ul > li a{
+  display: block;
+  margin-left: 10px;
+}
+.navbar > ul > li:first-child a{
+  margin-left: 30%;
+  margin-right: 5%;
+}

@@ -3,6 +3,7 @@
   <!--<title>cosmetics shop</title>-->
   <!--<link rel="stylesheet" href="users.component.css" type="text/css">-->
 
+
 </head>
 <body>
 
@@ -17,27 +18,54 @@
   </nav>
 
 
-  <div>
-  <ul class = navbar>
-
-
-    <li> <div>  <img src="../../assets/logo.PNG"> </div>  </li>
-    <li><a href="#"> Sign in </a></li>
-    <li><a href="#"> Sign in </a></li>
-    <li><a href="#"> Sign in </a></li>
-    <li><a href="#"> Sign in </a></li>
-    <li><a href="3"> Sign in </a></li>
-  </ul>
-  </div>
-
+ <app-categories></app-categories>
 
 
 </header>
-<br/><br/><br/><br/><br/><br/><br/><br/>
-  <div *ngFor="let user of users">
-      {{user.name}}
+<br><br><br><br><br><br><br>
+
+
+  <div class="slider">
+
+    <div class="slide-viewer">
+
+      <div class="slide-group">
+
+        <div class="slide slide-1">
+          <img src="../../assets/slide-1.jpg" alt="No two are the same" style="width: 100%"/>
+        </div>
+        <div class="slide slide-2">
+          <img src="../../assets/slide-2.jpg" alt="No two are the same" style="width: 100%"/>
+
+        </div>
+        <div class="slide slide-3">
+          <img src="../../assets/slide-4.jpg" alt="Salt o' The Sea" style="width: 100%"/>
+        </div>
+        <div class="slide slide-4">
+          <img src="../../assets/slide-3.jpg" alt="No two are the same" style="width: 100%"/>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="magda" class="slide-buttons">
+      <!--<button type="button" class="slide-btn">&bull;</button>-->
+      <!--<button type="button" class="slide-btn">&bull;</button>-->
+      <!--<button type="button" class="slide-btn">&bull;</button>-->
+      <!--<button type="button" class="slide-btn">&bull;</button>-->
+
+    </div>
   </div>
+<br/><br/><br/><br/>
+
+
+
+  <!--<div *ngFor="let user of users">-->
+      <!--{{user.name}}-->
+  <!--</div>-->
 
 
 </div>
+
+
 </body>
