@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "./auth.service";
 //import { AppServiceComponent } from './app.service';
 
 @Component({
@@ -9,10 +10,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
  // providers: [AppServiceComponent]
 })
+
 export class AppComponent {
   title = 'SHOP ONLINE';
 
-  // constructor(private appServiceComponent: AppServiceComponent){}
+  // constructor(private _authService: AuthService){}
   //
   // user = {
   //   name: '',

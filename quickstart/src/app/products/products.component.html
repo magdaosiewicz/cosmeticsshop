@@ -1,15 +1,31 @@
-<div *ngFor="let product of products">
+<div *ngFor="let product of products" class="container">
 
-  <div>
-    <br><br>
-    {{product.nameOfProduct}}
-    {{product.category}}
-    {{product.aboutProduct}}
-    {{product.ingredients}}
-    {{product.price}}
-    {{product.recommendation}}
+  <!--<div>-->
+    <!--<br><br>-->
+    <!--{{product.nameOfProduct}}-->
+    <!--{{product.category}}-->
+    <!--{{product.aboutProduct}}-->
+    <!--{{product.ingredients}}-->
+    <!--{{product.price}}-->
+    <!--{{product.recommendation}}-->
 
-    <input type="button" value="deleteProdyct" (click)="deleteProduct(product._id)">
+    <!--&lt;!&ndash;<input type="button" value="deleteProdyct" (click)="deleteProduct(product._id)">&ndash;&gt;-->
 
+  <!--</div>-->
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="img-thumbnail">
+        <img src="" alt="tu bedzie zdjecie">
+        <div class="caption">
+          <h5> {{product.nameOfProduct}}</h5>
+          <p>{{product.aboutProduct}}</p>
+          <p class="price">Cena: {{product.price}} zł</p>
+          <p><a href="#" class="btn btn-success " role="button ">Koszyk</a></p>
+        </div>
+      </div>
+    </div>
   </div>
+  <br><br>
+
 </div>
+

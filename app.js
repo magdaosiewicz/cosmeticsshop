@@ -26,6 +26,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', function () {
    console.log("Mongoose is now connected");
+
 });
 
 
@@ -37,6 +38,7 @@ app.use('/orders', order);
 app.use('/bags', bag);
 app.use('/addresses', address);
 app.use(express.static(path.join(__dirname, 'quickstart')));
+
 // app.use((req, res, next) => {
 //     res.set({
 //         "Access-Control-Allow-Origin": "*",
@@ -47,11 +49,7 @@ app.use(express.static(path.join(__dirname, 'quickstart')));
 //     next();
 // });
 
-
-
 let port = 3000;
-
-
 
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' );

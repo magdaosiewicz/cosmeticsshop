@@ -9,12 +9,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "await": "^0.2.6",
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
+    "csurf": "^1.9.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "mocha": "^5.2.0",
     "mongoose": "^5.3.9",
     "mongose": "0.0.2-security",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "swagger-client": "^3.8.22"
   }
 }

@@ -1,0 +1,82 @@
+<div class="row pt-4">
+  <div class="col-md-6 mx-auto">
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Rejestracja</h3>
+
+        <div class="alert alert-success" *ngIf="success">
+          <strong>Rejestracja została zapisana!</strong>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="errorEmailExists">
+          <strong>Adres e-mail jest już w użyciu!</strong> Proszę wybrać inny.
+        </div>
+
+      </div>
+      <div class="card-body">
+        <form name="form" role="form" (ngSubmit)="registerUser()" #registerForm="ngForm" *ngIf="!success">
+          <div class="form-group">
+            <label class="form-control-label" for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="registerUserData.email" minlength=5 maxlength=254 email required>
+            <div *ngIf="email.dirty && email.invalid">
+              <small class="form-text text-danger" *ngIf="email.errors.required">
+                Twój e-mail jest wymagany.
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.invalid">
+                Twój e-mail jest niepoprawny
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.minlength">
+                Twój e-mail musi zawierać co najmniej 5 znaków.
+              </small>
+              <small class="form-text text-danger" *ngIf="email.errors.maxlength">
+                Twój e-mail nie może być dłuższy niż 100 znaków.
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Nazwa użytkownika</label>
+            <input [(ngModel)]="registerUserData.username" name="username" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Hasło</label>
+            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Imię</label>
+            <input [(ngModel)]="registerUserData.name" name="name" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Nazwisko</label>
+            <input [(ngModel)]="registerUserData.surname" name="surname" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Kraj</label>
+            <input [(ngModel)]="registerUserData.country" name="country" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Województwo</label>
+            <input [(ngModel)]="registerUserData.province" name="province" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Miasto</label>
+            <input [(ngModel)]="registerUserData.city" name="city" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Ulica</label>
+            <input [(ngModel)]="registerUserData.streetAddress" name="streetAddress" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Numer domu/mieszkania</label>
+            <input [(ngModel)]="registerUserData.houseNumber" name="houseNumber" type="text" class="form-control rounded-0" required>
+          </div>
+          <div class="form-group">
+            <label>Kod pocztowy</label>
+            <input [(ngModel)]="registerUserData.postCode" name="postCode" type="text" class="form-control rounded-0" required>
+          </div>
+          <button type="submit" [disabled]="registerForm.form.invalid"  class="btn btn-primary">Zarejestruj się</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

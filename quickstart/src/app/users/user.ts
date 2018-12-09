@@ -1,10 +1,11 @@
 export class User{
 
-  _id?: string;
+  _id?: any;
   name: string;
   surname: string;
   username: string;
   password: string;
+
 
 
 

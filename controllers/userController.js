@@ -3,8 +3,9 @@ const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
 const Bag = require('../models/bagModel');
 const Address = require('../models/addressModel');
+const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
 
-//Simple version, without validation or sanitation
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
@@ -36,6 +37,7 @@ exports.userCreate = function (req, res) {
 
     let user = new User({
         name: req.body.name,
+        email: req.body.email,
         surname: req.body.surname,
         username: req.body.username,
         password: req.body.password,
@@ -45,13 +47,22 @@ exports.userCreate = function (req, res) {
             }]
     });
 
+    let userData = req.body;
+    User.findOne({email: userData.email}, (err, userf) => {
+        if(!userf){
+            user.save((registeredUser)=>{
+            let payload ={subject: registeredUser}
+            let token=jwt.sign(payload,'secretKey');
+            return res.status(200).send({token});
+        })
+        }else {
+            return res.status(400).send('That email already exists!');
+        }
 
-    user.save(function () {
-        res.send('User created successfully. \n\n' + user)
     });
 };
 /////////////////////////////////////////////////////////////////////////////
-exports.userUpdate = function (req, res) { // ale tylko dane osobowe, koszyk nie
+exports.userUpdate = function (req, res) {
     User.findByIdAndUpdate(req.params.id, req.body).then(function () {
         User.findOne({_id: req.params.id}).then(function (user) {
             res.render('User updated: \n\n' + user)
@@ -64,6 +75,45 @@ exports.getUsers = function (req, res) {
         res.send(users);
     })
 };
+
+exports.loginUser=function (req,res) {
+    let userData = req.body
+    User.findOne({email: userData.email}, (err, user) => {
+        if (err) {
+            console.log(err)
+        } else {
+            if (!user) {
+        res.status(401).send('Invalid Email');
+    }else
+        if ( user.password !== userData.password) {
+        res.status(401).send('Invalid Password');
+    }
+    else {
+        let payload = {subject: user._id};
+        let token = jwt.sign(payload, 'secretKey');
+        res.status(200).send({token})
+    }}
+});
+}
+
+exports.getUserId=function(req, res){
+    // User.findById(req.params.id).then(function () {
+        User.findOne({_id: req.params.id}).then(function (user) {
+            res.send(user)
+        });
+    // })
+};
+
+exports.getUserByName=function(req, res){
+    // User.findOne(req.params.name).then(function () {
+        User.findOne({name: req.params.name}).then(function (user) {
+            res.send(user)
+        });
+    // })
+};
+
+
+
 
 // module.exports = function(context, req) { context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl); f (req.query.name || (req.body && req.body.name))
 //     { context.res = { // status: 200, /* Defaults to 200 */ body: {name: (req.query.name || req.body.name) } }; } else { context.res = { status: 400, body: "Please pass a name on the query string or in the request body" }; } context.res.headers = { 'Access-Control-Allow-Credentials' : 'true', 'Access-Control-Allow-Origin' : 'http://localhost', 'Access-Control-Allow-Origins' : 'http://localhost', 'Content-Type': 'application/json' }; context.done(); };
