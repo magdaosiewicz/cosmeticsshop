@@ -65,6 +65,10 @@ exports.getUsers = function (req, res) {
     })
 };
 
+
+
+
+
 // module.exports = function(context, req) { context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl); f (req.query.name || (req.body && req.body.name))
 //     { context.res = { // status: 200, /* Defaults to 200 */ body: {name: (req.query.name || req.body.name) } }; } else { context.res = { status: 400, body: "Please pass a name on the query string or in the request body" }; } context.res.headers = { 'Access-Control-Allow-Credentials' : 'true', 'Access-Control-Allow-Origin' : 'http://localhost', 'Access-Control-Allow-Origins' : 'http://localhost', 'Content-Type': 'application/json' }; context.done(); };
 

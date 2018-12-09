@@ -1,15 +1,23 @@
 // app.js
-
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
+const crypto = new require('crypto');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
+
 //////////////////////////////////////////////////////////////////////////
 const product = require('./routes/productRoute'); // Imports routes for the products
+const category = require('./routes/categoryRoute');
 const user = require('./routes/userRoute');
 const order = require('./routes/orderRoute');
 const bag = require('./routes/bagRoute');
 const address = require('./routes/addressRoute');
-const path = require('path');
+const image = require('./routes/imageRoute');
+
 
 
 const app = express();
@@ -28,15 +36,29 @@ db.on('connected', function () {
    console.log("Mongoose is now connected");
 });
 
+app.use(methodOverride('_method'));
+app.set('view engine', 'ejs')
+let gfs;
+
+db.once('open', () => {
+    // Init stream
+    gfs = Grid(db.db, mongoose.mongo);
+    gfs.collection('uploads');
+});
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/products', product);
+app.use('/categories', category);
 app.use('/users', user);
 app.use('/orders', order);
 app.use('/bags', bag);
 app.use('/addresses', address);
-app.use(express.static(path.join(__dirname, 'quickstart')));
+app.use('/images', image);
+
+
+
 // app.use((req, res, next) => {
 //     res.set({
 //         "Access-Control-Allow-Origin": "*",
@@ -46,6 +68,29 @@ app.use(express.static(path.join(__dirname, 'quickstart')));
 //
 //     next();
 // });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Create storage engine
+const storage = new GridFsStorage({
+    url: dev_db_url,
+    file: (req, file) => {
+        return new Promise((resolve, reject) => {
+            crypto.randomBytes(16, (err, buf) => {
+                if (err) {
+                    return reject(err);
+                }
+                const filename = buf.toString('hex') + path.extname(file.originalname);
+                const fileInfo = {
+                    filename: filename,
+                    bucketName: 'uploads'
+                };
+                resolve(fileInfo);
+            });
+        });
+    }
+});
+const upload = multer({ storage });
+
 
 
 

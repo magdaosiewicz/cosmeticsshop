@@ -1,34 +1,20 @@
-<!--<p>-->
-  <!--categories works!-->
-<!--</p>-->
-
-
-
 
 <div>
 <ul class = navbar>
 
 
-  <!--<app-categories> </app-categories>-->
-
   <li> <div>  <img src="../../assets/logo.PNG"> </div>  </li>
   <div *ngFor="let category of categories">
-  <li><a href="#"> {{category.nameOfCategory}} </a></li>
+
+  <li><a routerLink="category-detail/{{category.nameOfCategory}}"    > {{category.nameOfCategory}} </a></li>
+
+
 
   </div>
-  <!--<li><a href="#"> Sign in </a></li>-->
-  <!--<li><a href="#"> Sign in </a></li>-->
-  <!--<li><a href="#"> Sign in </a></li>-->
-  <!--<li><a href="3"> Sign in </a></li>-->
-
-
 </ul>
-<br><br><br><br>
-
-
 
 
 </div>
 
 
-
+<br><br><br><br>

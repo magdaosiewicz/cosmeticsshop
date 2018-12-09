@@ -1,0 +1,39 @@
+
+<div *ngFor="let p of productsOfCategoryInput; index as i"  >
+
+  <div *ngIf="p._id === product._id">
+    <br><br>
+
+
+    <div class="productImageBox">
+    <img class="productImage" src="../../assets/imageg{{i}}.PNG" >
+    </div>
+
+    <div class="descriptionOfProduct">
+
+      <p id="name"> {{product.nameOfProduct}} </p> <br>
+      <p id="price"> {{product.price}},00 zł </p> <br>
+      <p style="font-size: medium; color: #383b3d">fridge Bestseller - polecany przez nasze klientki</p>
+      <p id="recommendation"> {{product.recommendation}}  </p>
+      <img  style="width: 450px; height: 90px" src="../../assets/productImages.PNG" > <br><br>
+    <p> <a href="#" class="btn my-button" style="text-align:center; font-size: medium">  dodaj do koszyka  </a> </p>
+
+    </div>
+
+
+    <div class="additionalInformation">
+      kfmnglkdf
+
+    </div>
+
+
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  </div>
+</div>
+
+
+
+
+
+

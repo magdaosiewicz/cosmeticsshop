@@ -1,15 +1,44 @@
-<div *ngFor="let product of products">
+<div *ngFor="let product of products; index as i"  class="container">
 
-  <div>
-    <br><br>
-    {{product.nameOfProduct}}
-    {{product.category}}
-    {{product.aboutProduct}}
-    {{product.ingredients}}
-    {{product.price}}
-    {{product.recommendation}}
+  <!--<li *ngFor="let number of [0,1,2,3,4]">{{number}}</li>-->
 
-    <input type="button" value="deleteProdyct" (click)="deleteProduct(product._id)">
+  <div class="productsSection">
+
+    <div class="productContainer">
+      <div class="card"   style="width: 23rem;  height: 35rem; border: none; text-align:center ">
+        <!--<img class="card-img-top" alt="Card image cap" style="text-align:center"/>-->
+        <img src="../../assets/imageg{{i}}.PNG" class="rounded" style="width: 7rem; height: 16rem; margin-left: 130px" >
+        <!--<p> imageg{{i}}.PNG </p>-->
+        <div class="card-body" >
+          <h5 class="card-title" style="color: black; font-family: 'Dubai Light'; text-align:center ;font-size: medium; margin-left: 15px " >{{product.nameOfProduct}}</h5>
+          <p class="card-text" style="font-size: xx-small; text-align:center ">{{product.price}}zł</p>
+          <p class="card-text" style="margin-left: 5px; font-size: small; text-align:center">{{product.aboutProduct}}</p> <br>
+          <a href="#" class="btn my-button" style="text-align:center; font-size: small" >  dodaj do koszyka  </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
   </div>
-</div>
+<!--src=".../100px180/"-->
+
+<!--<% if(files){ %>-->
+<!--<% files.forEach(function(file) { %>-->
+<!--<div class="card card-body mb-3">-->
+  <!--<% if(file.isImage) { %>-->
+  <!--<img src="image/<%= file.filename %>" alt="">-->
+  <!--<% } else { %>-->
+  <!--<%= file.filename %>-->
+  <!--<% } %>-->
+  <!--&lt;!&ndash;<form method="POST" action="/files/<%= file._id %>?_method=DELETE">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button class="btn btn-danger btn-block mt-4">Delete</button>&ndash;&gt;-->
+  <!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--</div>-->
+<!--<% }) %>-->
+<!--<% } else { %>-->
+<!--<p>No files to show</p>-->
+<!--<% } %>-->

@@ -1,0 +1,157 @@
+.text-test{
+  color: green;
+}
+
+
+nav{
+  /*background-color: #3a3737;*/
+  background-color: black;
+  text-align: center;
+  height:  4%;
+  opacity: 0.78;
+  padding-top: 5px;
+}
+a{
+  text-decoration: none;
+  color: gray;
+
+}
+ul{
+  list-style: none;
+}
+nav.sticky >ul{
+  font-size: 0.79em;
+  font-weight: 100;
+  /*font-family: 'Muli', sans-serif;*/
+  /*color: whitesmoke;*/
+  margin-left: 65%;
+  display: block;
+
+}
+nav.sticky >ul > li{
+  display: inline-block;
+  width: 20%;
+  margin-top: 1px;
+  padding: 0;
+}
+.sticky{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  /*padding-top: 10px;*/
+}
+
+nav a{
+  text-decoration: none;
+  color: whitesmoke;
+}
+/*.navbar{*/
+/*margin-top: 3%;*/
+/*float: left;*/
+/*width: 60%;*/
+/*margin-left: 7%;*/
+
+/*}*/
+/*.navbar > ul {*/
+/*display: block;*/
+/*float: left;*/
+/*list-style: none;*/
+/*}*/
+/*.navbar > ul > li a{*/
+/*display: block;*/
+/*margin-left: 10px;*/
+/*}*/
+/*.navbar > ul > li:first-child a{*/
+/*margin-left: 30%;*/
+/*}*/
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+div.slider {
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+
+  /*margin: 0px auto 30px auto;*/
+}
+
+.slide-viewer {
+  position: relative; /* needed for IE7 */
+  overflow: hidden;
+  height: 470px;
+  width: 100%;
+}
+
+/*.slide-group {*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*position: relative;*/
+/*}*/
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  background-color: #c10c2b;
+
+}
+
+.slide:first-child {
+  display: block;}
+
+
+/********** Przyciski **********/
+.slide-buttons {
+  text-align: center;
+  position: absolute;
+  bottom: 1%;
+  left: 47%;
+}
+.slide-btn {
+  border: none;
+  background: none;
+  color: #000;
+  opacity: 0.9;
+  font-size: 200%;
+  line-height: 0.5em;
+}
+
+.slide-group{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.slide-btn.active {
+  color: pink;
+  /*opacity: 0.3;*/
+  cursor: pointer;
+
+}
+.slide-btn:hover{
+  color: pink;
+  /*opacity: 0.3;*/
+  cursor: pointer;
+}
+/*/// z base.css*/
+
+/*button {*/
+/*font-size: 90%;*/
+/*text-align: left;*/
+/*text-transform: uppercase;}*/
+
+/*****************  Brak obsługi JavaScript ***************/
+#billboard {text-align: center;}
+.js-warning {display: none;}
+
+.no-js .js-warning {
+  display: block;
+  border: 3px solid #fff;
+  text-align: center;
+  background-color: #fff;
+  color: #db5391;
+  padding: 10px;}

@@ -7,6 +7,14 @@ import {HttpModule} from "@angular/http";
 import { UsersComponent } from './users/users.component';
 import { ProductsComponent } from './products/products.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CategoryDetailComponent } from './categories/category-detail/category-detail.component';
+import {AppRoutingModule} from "./app-routing.module";
+import {ProductService} from "./products/product.service";
+import {CategoryService} from "./categories/category.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { ProductDetailComponent } from './categories/category-detail/product-detail/product-detail.component';
+// import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -14,13 +22,17 @@ import { CategoriesComponent } from './categories/categories.component';
     UsersComponent,
     ProductsComponent,
     CategoriesComponent,
+    CategoryDetailComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
