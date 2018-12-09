@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="topnav-right">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Start <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Konto</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:black;" >
+          <a class="dropdown-item" routerLink="/sign-in" *ngIf="!_authService.loggedIn()" id="sign-in" routerLinkActive="active">Zaloguj się</a>
+          <a class="dropdown-item" routerLink="/account"  *ngIf="_authService.loggedIn()" id="account" routerLinkActive="active">Ustawienia</a>
+          <a class="dropdown-item" style="cursor: pointer" *ngIf="_authService.loggedIn()" id="log-out" (click)="_authService.logoutUser()" routerLinkActive="active">Wyloguj się</a>
+          <a class="dropdown-item" routerLink="/sign-up"  *ngIf="!_authService.loggedIn()" id="sign-up" routerLinkActive="active">Zarejestruj się</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>

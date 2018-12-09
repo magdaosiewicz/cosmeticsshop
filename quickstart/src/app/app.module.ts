@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
@@ -11,11 +10,17 @@ import { CategoryDetailComponent } from './categories/category-detail/category-d
 import {AppRoutingModule} from "./app-routing.module";
 import {ProductService} from "./products/product.service";
 import {CategoryService} from "./categories/category.service";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ProductDetailComponent } from './categories/category-detail/product-detail/product-detail.component';
-// import { AppRoutingModule } from './app-routing.module';
-
-
+import {HomeComponent} from "./home/home.component";
+import { SignInComponent } from './users/sign-in/sign-in.component';
+import { SignUpComponent } from './users/sign-up/sign-up.component';
+import { HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth.service";
+import {NavbarComponent} from "./navbar/navbar.component";
+import {UserService} from "./users/user.service";
+import {AccountComponent} from './account/account.component';
+import {AuthGuard} from "./auth.guard";
+import {RouterModule} from "@angular/router";
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,16 +28,23 @@ import { ProductDetailComponent } from './categories/category-detail/product-det
     ProductsComponent,
     CategoriesComponent,
     CategoryDetailComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    HomeComponent,
+    SignInComponent,
+    SignUpComponent,
+    NavbarComponent,
+    AccountComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
-  providers: [ProductService, CategoryService],
+  providers: [ProductService, CategoryService, UserService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

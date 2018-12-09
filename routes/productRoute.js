@@ -4,30 +4,8 @@ const crypto = new require('crypto');
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const path = require('path');
-
-// Require the controllers WHICH WE DID NOT CREATE YET!!
 const productController = require('../controllers/productController');
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, './uploads/');
-//     },
-//     filename: function (req, file, cb) {
-//         cb(null, new Date().toISOString() + file.originalname);
-//     }
-// });
-//
-//
-//
-// const fileFilter = (req, file, cb) => {
-//     // reject a file
-//     if (file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
-//         cb(null, true);
-//     } else {
-//         cb(null, false);
-//     }
-// };
 
 
 let dev_db_url = 'mongodb://ela:ela123@ds151533.mlab.com:51533/cosmeticsshop';

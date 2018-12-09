@@ -3,6 +3,7 @@ import  {UserService } from "./user.service";
 import  {User} from "./user";
 import * as $ from 'jquery'
 import {any} from "codelyzer/util/function";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -12,15 +13,8 @@ import {any} from "codelyzer/util/function";
   providers: [UserService]
 })
 export class UsersComponent implements OnInit {
-
-  users: User[];
-  user: User;
-  name: string;
-  surname: string;
-  username: string;
-  password: string;
-
-  constructor(private userService: UserService) { }              //dependency injection
+// name='';
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -32,6 +26,8 @@ export class UsersComponent implements OnInit {
     // this.userService.getUsers()
     //   .subscribe(users =>
     //   this.users = users);
+    // console.log(this.route.snapshot.params);
+    // this.name = this.route.snapshot.params.name;
+    // if(!this.name) this.name='not passed?';
   }
-
 }

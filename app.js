@@ -34,6 +34,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', function () {
    console.log("Mongoose is now connected");
+
 });
 
 app.use(methodOverride('_method'));
@@ -55,9 +56,13 @@ app.use('/users', user);
 app.use('/orders', order);
 app.use('/bags', bag);
 app.use('/addresses', address);
+// <<<<<<< HEAD
 app.use('/images', image);
 
 
+// =======
+app.use(express.static(path.join(__dirname, 'quickstart')));
+// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
 
 // app.use((req, res, next) => {
 //     res.set({
@@ -69,6 +74,7 @@ app.use('/images', image);
 //     next();
 // });
 
+// <<<<<<< HEAD
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Create storage engine
 const storage = new GridFsStorage({
@@ -92,11 +98,11 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 
-
-
+//
+//
+// =======
+// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
 let port = 3000;
-
-
 
 app.listen(port, () => {
     console.log('Server is up and running on port numner ' );
