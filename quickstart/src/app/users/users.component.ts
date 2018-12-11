@@ -18,6 +18,15 @@ export class UsersComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+
+
+
+
+
+    // this.userService.getUsers()
+    //   .subscribe(users =>
+    //   this.users = users);
     // console.log(this.route.snapshot.params);
     // this.name = this.route.snapshot.params.name;
     // if(!this.name) this.name='not passed?';

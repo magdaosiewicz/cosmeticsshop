@@ -1,0 +1,61 @@
+.productImage{
+  width: 180px;
+  height: 450px;
+  margin-left: 350px
+}
+.productImageBox{
+  float: left;
+  width: 600px;
+}
+
+.descriptionOfProduct{
+  width: 900px;
+  height: 450px;
+  display: block;
+  float: left;
+  padding-left: 200px;
+}
+.additionalInformation{
+  display: block;
+  background-color: gray;
+  width: 100%;
+  clear: both;
+  height: 100px;
+
+}
+p{
+  font-family: "Calibri Light";
+  color: #383b3d;
+}
+#name{
+  font-size: 3em;
+  color: #3f4244;
+  font-weight: inherit;
+}
+#price {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: black;
+}
+#recommendation{
+  font-size: medium;
+}
+.my-button{
+  width: 150px;
+  height: 45px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: left;
+  white-space: pre-wrap;
+  border: 1px solid black;
+  padding: .375rem .75rem;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  background-color: transparent;
+  /*float: left;*/
+  font-size: small;
+  color: black;
+  margin: 6px 5px 4px 5px;
+
+}

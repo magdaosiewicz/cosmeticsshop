@@ -1,0 +1,27 @@
+<div>
+
+  <div *ngFor="let product of productsOfCategoryInput; index as i"  class="container">
+
+    <div class="productsSection">
+      <div class="productContainer">
+        <div class="card"   style="width: 23rem;  height: 35rem; border: none; text-align:center ">
+          <a href="#"  routerLink="{{product._id}}">  <img src="../../assets/imageg{{i}}.PNG" class="rounded" style="width: 7rem; height: 16rem; margin-left: 17px" > </a>
+          <div class="card-body" >
+            <h5 class="card-title" style="color: black; font-family: 'Dubai Light'; text-align:center ;font-size: medium; margin-left: 15px " >{{product.nameOfProduct}}</h5>
+            <p class="card-text" style="font-size: xx-small; text-align:center ">{{product.price}}zł</p>
+            <p class="card-text" style="margin-left: 5px; font-size: small; text-align:center">{{product.aboutProduct}}</p> <br>
+            <a href="#" class="btn my-button" style="text-align:center; font-size: small">  dodaj do koszyka  </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <router-outlet></router-outlet>
+
+
+<br><br>
+
+
+</div>

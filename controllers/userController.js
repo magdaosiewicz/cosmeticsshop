@@ -64,6 +64,8 @@ exports.getUsers = function (req, res) {
     })
 };
 
+// <<<<<<< HEAD
+// =======
 exports.loginUser=function (req,res) {
     let userData = req.body;
     User.findOne({email: userData.email}, (err, user) => {
@@ -90,5 +92,6 @@ exports.getUserId= function  (req, res){
     });
     // })
 };
+// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
 
 

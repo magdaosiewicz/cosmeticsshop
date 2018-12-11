@@ -1,0 +1,26 @@
+.productsSection{
+  margin-top: 70px;
+}
+.productContainer{
+  float: left;
+}
+
+.my-button{
+  width: 135px;
+  height: 40px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: left;
+  white-space: pre-wrap;
+  border: 1px solid black;
+  padding: .375rem .75rem;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  background-color: transparent;
+  /*float: left;*/
+  font-size: small;
+  color: black;
+  margin: 6px 5px 4px 5px;
+
+}

@@ -17,7 +17,7 @@ exports.addProduct = function (req, res) {
                 bag.cost += product.price;
                 bag.save().then(function () {
                     Bag.findOne(user.bag).then(function (bag) {
-                        res.send("The product was added to your bag" +bag.products)
+                        res.json("The product was added to your bag" +bag.products)
                     })
 
                 });
@@ -29,7 +29,7 @@ exports.addProduct = function (req, res) {
 exports.getBagOfUser = function (req, res) {
     User.findById(req.params.id, req.body).then(function (user) {
         Bag.findById(user.bag).then(function (bag) {
-            res.send("The product was added to your bag. \n\n\n" + bag)
+            res.json("The product was added to your bag. \n\n\n" + bag)
         })
     })
 };
