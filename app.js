@@ -98,10 +98,7 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 
-//
-//
-// =======
-// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
+
 let port = 3000;
 
 app.listen(port, () => {

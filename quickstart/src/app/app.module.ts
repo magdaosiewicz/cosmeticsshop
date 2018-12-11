@@ -21,6 +21,7 @@ import {UserService} from "./users/user.service";
 import {AccountComponent} from './account/account.component';
 import {AuthGuard} from "./auth.guard";
 import {RouterModule} from "@angular/router";
+import { BagComponent } from './bag/bag.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import {RouterModule} from "@angular/router";
     SignInComponent,
     SignUpComponent,
     NavbarComponent,
-    AccountComponent
+    AccountComponent,
+    BagComponent
 
   ],
   imports: [

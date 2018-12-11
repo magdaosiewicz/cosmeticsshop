@@ -9,7 +9,6 @@ router.get('/getUser/:id', userController.getUserId);
 router.post('/create', userController.userCreate);
 router.put('/update/:id', userController.userUpdate);
 router.post('/login', userController.loginUser);
-router.get('/getUserByName/:name', userController.getUserByName);
 
 
 module.exports = router;

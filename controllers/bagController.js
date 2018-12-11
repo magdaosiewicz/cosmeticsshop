@@ -10,15 +10,15 @@ exports.test = function (req, res) {
 };
 
 exports.addProduct = function (req, res) {
-    User.findById(req.params.id, req.body).then(function (user) {
+    User.findById(req.params.id).then(function (user) {
         Bag.findByIdAndUpdate(user.bag).then(function (bag) {
-            Product.findById(req.params.id_product, req.body).then(function (product) {
-                bag.products.add(product);
+            Product.findOne({_id: req.params.id_product}).then(function (product) {
+                 bag.products.push(product);
                 bag.cost += product.price;
                 bag.save().then(function () {
                     Bag.findOne(user.bag).then(function (bag) {
-                        res.json("The product was added to your bag" +bag.products)
-                    })
+                        res.json("The product was added to your bag" + bag)
+                    });
 
                 });
             });
@@ -29,7 +29,7 @@ exports.addProduct = function (req, res) {
 exports.getBagOfUser = function (req, res) {
     User.findById(req.params.id, req.body).then(function (user) {
         Bag.findById(user.bag).then(function (bag) {
-            res.json("The product was added to your bag. \n\n\n" + bag)
+            res.json(bag)
         })
-    })
+    });
 };

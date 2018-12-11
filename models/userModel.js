@@ -25,11 +25,11 @@ const UserSchema  = new Schema({
     address: {type: Schema.Types.ObjectId, required: false, ref: "Address"}
 });
 
-UserSchema.methods.encryptPassword =function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync((5),null));
-};
-UserSchema.methods.validPassword=function (password) {
-    return bcrypt.compareSync(password,this.password);
-};
+// UserSchema.methods.encryptPassword =function (password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync((5),null));
+// };
+// UserSchema.methods.validPassword=function (password) {
+//     return bcrypt.compareSync(password,this.password);
+// };
 
 module.exports = mongoose.model('Users', UserSchema);

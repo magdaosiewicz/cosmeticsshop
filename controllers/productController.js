@@ -40,8 +40,8 @@ exports.product_create = function (req, res) {
                 ingredients: req.body.ingredients,
                 recommendation: req.body.recommendation,
                 price: req.body.price,
-                category: category,
-                productImage: req.body.productImage
+                category: category
+               // productImage: req.body.productImage
             });
 
             product.save();

@@ -2,6 +2,7 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {CategoryService} from "../../category.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Product} from "../../../products/product";
+import {Bag} from "../../../bag/bag";
 
 @Component({
   moduleId: module.id,
@@ -15,6 +16,8 @@ export class ProductDetailComponent implements OnInit {
   productId: number;
   product: Product;
   productsOfCategoryInput: Product[];
+  bag: Bag;
+  idd='5c0eabcacc6fa5381466c5da';
 
   constructor(private categoryService: CategoryService, private  route: ActivatedRoute) { }
 
@@ -38,9 +41,28 @@ export class ProductDetailComponent implements OnInit {
         });
     });
 
+    this.categoryService.getBagOfUser(this.idd)
+      .subscribe(data =>{
+        console.log(data);
+        this.bag=data;
+      })
 
 
   }
+
+  public addProductToTheBag = (idd, bag) => {
+    // idd='5c0eabcacc6fa5381466c5da';
+    this.categoryService.addProductToTheBag(this.idd, this.product._id, this.bag)
+      .subscribe(result =>
+       this.bag = result)
+  };
+
+
+
+
+
+
+
 
 }
 

@@ -4,18 +4,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import {Observable} from "rxjs/Observable";
+import {User} from "./user";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private isUserLoggedIn;
-  constructor(private http: Http) {
+  public isUserLoggedIn;
+
+  constructor(private _http: Http,private http: HttpClient) {
     this.isUserLoggedIn =false;
   }
 
-  //retriving user
+//  retriving user
   setUserLoggedIn(){
     this.isUserLoggedIn = true;
   }
@@ -33,21 +37,12 @@ export class UserService {
     let options = new RequestOptions({
       headers: headers
     });
-    return this.http.get('http://localhost:3000/users/getUsers', options)
+    return this._http.get('http://localhost:3000/users/getUsers', options)
       .map(res => res.json());
   }
 
-  getUserById(id:any) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': 'true'
-    });
-
-    let options = new RequestOptions({
-      headers: headers
-    });
-    return this.http.get('http://localhost:3000/users/getUser/'+id, options).map(res => res.json());
+  getUserByIdd(id: string): Observable<User> {
+    return this.http.get<User>('http://localhost:3000/users/getUser/'+id)
   }
 
 }

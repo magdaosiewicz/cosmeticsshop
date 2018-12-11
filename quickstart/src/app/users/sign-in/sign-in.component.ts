@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user.service";
 import {AuthService} from "../../auth.service";
 import {Router} from "@angular/router";
+import {User} from "../user";
+import {NgForm} from "@angular/forms";
+import {tokenKey} from "@angular/core/src/view";
 
 @Component({
   selector: 'sign-in',
@@ -9,18 +12,28 @@ import {Router} from "@angular/router";
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  loginUserData={};
-  constructor( private _auth: AuthService, private  router: Router, private user: UserService) { }
+  loginUserData: User;
+
+  constructor( private _auth: AuthService, private  router: Router, private userService: UserService) {
+    if(!this.loginUserData){
+      this.loginUserData={};
+    }
+  }
   ngOnInit() {}
 
   loginUser() {
     this._auth.loginUser(this.loginUserData)
       .subscribe(
         (res) => {
-        localStorage.setItem('token', res.token);
-        this.router.navigate(['/']);  //po zalogowaniu przeniesie mnie tu
-        this.user.setUserLoggedIn();
-        }, err=>console.log(err)
+
+          this.router.navigate(['/']);  //po zalogowaniu przeniesie mnie tu
+          this.userService.setUserLoggedIn();
+          this.loginUserData=res;
+          console.log(res);
+          console.log(this.loginUserData._id);
+        }, err=>console.log("cos poszlo zle 🙂")
       )
   }
+
+
 }

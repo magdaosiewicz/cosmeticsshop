@@ -1,27 +1,32 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpResponse} from '@angular/common/http'
 import { Router} from "@angular/router";
 import {UserService} from "./users/user.service";
-
+import {User} from "./users/user";
+import {Observable} from "rxjs/Rx";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
 
-  constructor(private http: HttpClient, private user: UserService, private router: Router) {}
+  // private user = new BehaviorSubject<User>({});
+  // user$ = this.user.asObservable();
+
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) {}
   private _registerUrl = "http://localhost:3000/users/create";
   private _loginUrl = "http://localhost:3000/users/login";
   private _updateUrl ="http://localhost:3000/users/update/";
 
-  registerUser(user) {
-    return this.http.post<any>(this._registerUrl, user)
+  registerUser(user:User): Observable<User>{
+    return this.http.post<User>(this._registerUrl, user)
   }
 
-  loginUser(user) {
-    return this.http.post<any>(this._loginUrl, user)
+  loginUser(user:User): Observable<User> {
+    return this.http.post<any>(this._loginUrl, user);
   }
 
-   loggedIn(){
+  loggedIn(){
     return !!localStorage.getItem('token');
   }
 
@@ -30,16 +35,13 @@ export class AuthService{
     this.router.navigate(['/']);
   }
 
-  // getToken(){
-  //   return localStorage.getItem('token');
-  // }
-
-  // getUser(id,user){
-  //   return this.http.get<any>("http://localhost:3000/users/getUser/"+id,user)
-  // }
+  getToken(){
+    return localStorage.getItem('token');
+  }
 
   updateUser(user,id){
     return this.http.put<any>(this._updateUrl + id, user)
   }
+
 
 }
