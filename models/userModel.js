@@ -15,8 +15,9 @@ const OrderSchema = new Schema({
 });
 
 const UserSchema  = new Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     name : {type : String},
-    email: {type : String, unique: true, required: true},
+    email: {type : String, unique: true, required: true,match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
     surname : {type: String},
     username : {type: String, unique: true},
     password: {type: String, required: true},
@@ -24,12 +25,5 @@ const UserSchema  = new Schema({
     bag: {type: Schema.Types.ObjectId, ref: "Bag"},
     address: {type: Schema.Types.ObjectId, required: false, ref: "Address"}
 });
-
-UserSchema.methods.encryptPassword =function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync((5),null));
-};
-UserSchema.methods.validPassword=function (password) {
-    return bcrypt.compareSync(password,this.password);
-};
 
 module.exports = mongoose.model('Users', UserSchema);

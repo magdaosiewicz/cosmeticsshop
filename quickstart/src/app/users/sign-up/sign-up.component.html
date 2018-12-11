@@ -14,10 +14,10 @@
 
       </div>
       <div class="card-body">
-        <form name="form" role="form" (ngSubmit)="registerUser()" #registerForm="ngForm" *ngIf="!success">
+        <form name="form" role="form" (ngSubmit)="registerUser(user)" #registerForm="ngForm" *ngIf="!success">
           <div class="form-group">
             <label class="form-control-label" for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="registerUserData.email" minlength=5 maxlength=254 email required>
+            <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" minlength=5 maxlength=254 email required>
             <div *ngIf="email.dirty && email.invalid">
               <small class="form-text text-danger" *ngIf="email.errors.required">
                 Twój e-mail jest wymagany.
@@ -36,43 +36,43 @@
 
           <div class="form-group">
             <label>Nazwa użytkownika</label>
-            <input [(ngModel)]="registerUserData.username" name="username" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.username" name="username" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Hasło</label>
-            <input [(ngModel)]="registerUserData.password" name="password" type="password" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.password" name="password" type="password" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Imię</label>
-            <input [(ngModel)]="registerUserData.name" name="name" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.name" name="name" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Nazwisko</label>
-            <input [(ngModel)]="registerUserData.surname" name="surname" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.surname" name="surname" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Kraj</label>
-            <input [(ngModel)]="registerUserData.country" name="country" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.country" name="country" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Województwo</label>
-            <input [(ngModel)]="registerUserData.province" name="province" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.province" name="province" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Miasto</label>
-            <input [(ngModel)]="registerUserData.city" name="city" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.city" name="city" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Ulica</label>
-            <input [(ngModel)]="registerUserData.streetAddress" name="streetAddress" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.streetAddress" name="streetAddress" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Numer domu/mieszkania</label>
-            <input [(ngModel)]="registerUserData.houseNumber" name="houseNumber" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.houseNumber" name="houseNumber" type="text" class="form-control rounded-0" required>
           </div>
           <div class="form-group">
             <label>Kod pocztowy</label>
-            <input [(ngModel)]="registerUserData.postCode" name="postCode" type="text" class="form-control rounded-0" required>
+            <input [(ngModel)]="user.postCode" name="postCode" type="text" class="form-control rounded-0" required>
           </div>
           <button type="submit" [disabled]="registerForm.form.invalid"  class="btn btn-primary">Zarejestruj się</button>
         </form>

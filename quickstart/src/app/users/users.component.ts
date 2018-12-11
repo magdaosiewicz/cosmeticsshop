@@ -14,6 +14,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class UsersComponent implements OnInit {
 // name='';
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {

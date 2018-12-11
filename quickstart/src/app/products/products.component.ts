@@ -15,12 +15,12 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
   product: Product;
-  nameOfProduct: string;
-  numberOfPieces: number;
-  aboutProduct: string;
-  ingredients: string;
-  recommendation: string;
-  price: number;
+  // nameOfProduct: string;
+  // numberOfPieces: number;
+  // aboutProduct: string;
+  // ingredients: string;
+  // recommendation: string;
+  // price: number;
   @Input() category: Category;
 
   constructor(private productService: ProductService, private categoryService: CategoryService) { }

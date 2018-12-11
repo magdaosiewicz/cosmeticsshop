@@ -20,8 +20,9 @@ const mongoose = require('mongoose');
 let dev_db_url = 'mongodb://ela:ela123@ds151533.mlab.com:51533/cosmeticsshop';
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.Promise = global.Promise;
+process.env.JWT_KEY = "secret"
 
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { useNewUrlParser: true },);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', function () {
@@ -39,6 +40,18 @@ app.use('/bags', bag);
 app.use('/addresses', address);
 app.use(express.static(path.join(__dirname, 'quickstart')));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+);
+if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+}
+next();
+});
 // app.use((req, res, next) => {
 //     res.set({
 //         "Access-Control-Allow-Origin": "*",

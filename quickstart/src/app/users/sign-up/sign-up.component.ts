@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../user";
 import {AuthService} from "../../auth.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -9,36 +10,27 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  user: User;
 
-  registerUserData ={};
-  error: string;
-  errorEmailExists: string;
-  success: boolean;
-
-  constructor(private _auth: AuthService) { }
-
-  ngOnInit() {
-    this.success = false;
+  constructor(private _auth: AuthService, private router: Router , private  userService: UserService) {
+    if(!this.user){
+      this.user={};
+    }
   }
 
-  registerUser(){
-    this.error = null;
-    this.errorEmailExists = null;
-    this._auth.registerUser(this.registerUserData).subscribe(
-      res => {this.success = true;
-      console.log(res);
-      localStorage.setItem('token',res.token)},
-      error => this.processError(error)
+  ngOnInit() {}
+
+  registerUser(user) {
+    this._auth.registerUser(user).subscribe(
+      res => {
+        // localStorage.setItem('id',res.username);
+        console.log(res);
+        this.user = res;
+        // console.log( this.userService.getID())
+      },
+      error =>console.log(error)
     );
   }
 
-  private processError(response: HttpErrorResponse) {
-    this.success = null;
-    if (response.status === 400  ) {
-      this.errorEmailExists = 'ERROR';
-    }else {
-      this.error = 'ERROR';
-    }
-  }
 }
 
