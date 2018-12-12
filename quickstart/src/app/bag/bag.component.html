@@ -1,23 +1,20 @@
 
+  <div *ngFor="let p of bag.products; index as i">
+   <div class="name">  {{p.nameOfProduct}}     <button  (click)="deleteProduct(p._id)">  DELETE </button> </div>
+    <!--o jeden za duzo chyba si eorbi delte czy cos-->
+  </div>
   <div *ngFor="let p of bag.products">
-
-
-   <p>  {{p.nameOfProduct}} </p>
-
-
-</div>
-
-
-    <div> {{bag.cost}} </div>
-  <div> {{user1.email}} </div>
+    <div class="price"> price:  {{p.price}} </div>
+  </div>
+  <div *ngFor="let p of bag.products">
+    <div class="about">  {{p.aboutProduct}} </div>
+  </div>
 
 
 
-
-  <div *ngFor="let u of user | async">
-
-
+    CALKOWITY KOSZT: <h4> {{bag.cost}} </h4>
+  <!--<div> {{user1.email}} </div>-->
 
 
-</div>
+
 

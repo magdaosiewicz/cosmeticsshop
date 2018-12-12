@@ -17,9 +17,14 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   productsOfCategoryInput: Product[];
   bag: Bag;
-  idd='5c0eabcacc6fa5381466c5da';
+  idd='5c0fa8229c2cb522dca880da';
 
-  constructor(private categoryService: CategoryService, private  route: ActivatedRoute) { }
+  constructor(private categoryService: CategoryService, private  route: ActivatedRoute) {
+
+    if(!this.product){
+      this.product={};
+    }
+  }
 
   ngOnInit() {
 

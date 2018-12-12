@@ -1,0 +1,21 @@
+.name{
+
+  background-color: gray;
+  display: block;
+  width: 20%;
+
+}
+
+.price{
+  display: block;
+  width: 20%;
+
+}
+
+.about{
+  display: block;
+  width: 20%;
+  background-color: pink;
+
+
+}

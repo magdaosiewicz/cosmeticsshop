@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Bag} from "../bag/bag";
+import {indexDebugNode} from "@angular/core/src/debug/debug_node";
 
 @Injectable({
   providedIn: 'root'
@@ -52,25 +53,21 @@ export class CategoryService {
 
   getProductsOfCategory(nameOfCategory: string): Observable<Array<Product>> {
     return this.http.get<Array<Product>>('http://localhost:3000/products/' + nameOfCategory + '/getProductsByCategory')
-
   }
-
   getProductById(id: number): Observable<Product>{
     return this.http.get<Product>('http://localhost:3000/products/'+id+'/product')
   }
-
   getBagOfUser(id: string): Observable<Bag>{
     return this.http.get<Bag>('http://localhost:3000/bags/'+ id +'/getBagOfUser')
   }
-
-
   addProductToTheBag(id: string, id_product: string, bag: Bag): Observable<Bag>{
-
-    // let options = new RequestOptions({
-    //   headers: headers
-    // });
     return this.http.put<Bag>('http://localhost:3000/bags/'+id+'/'+id_product+'/addProduct', bag)
   }
+  removeProduct(id: string, id_product: string, bag: Bag): Observable<Bag>{
+    return this.http.put<Bag>('http://localhost:3000/bags/'+id+'/'+id_product+'/deleteProduct', bag)
+  }
+
+
 
 
 

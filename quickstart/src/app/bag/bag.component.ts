@@ -11,17 +11,14 @@ import {AuthService} from "../auth.service";
 export class BagComponent implements OnInit {
 
   bag: Bag;
-  idd='5c0eabcacc6fa5381466c5da';
+  idd='5c0fa8229c2cb522dca880da';
 
 
   constructor(private categoryService: CategoryService) {
     this.categoryService.getBagOfUser(this.idd);
-    if(! this.bag){
-      this.bag=null;
-    }
-
-
-
+    // if(! this.bag){
+    //   this.bag={};
+    // }
   }
 
   ngOnInit() {
@@ -31,8 +28,19 @@ export class BagComponent implements OnInit {
         console.log(data);
         this.bag=data;
       })
-
-
   }
+
+  deleteProduct= (id_product) => {
+    this.categoryService.removeProduct(this.idd, id_product, this.bag);
+    this.categoryService.getBagOfUser(this.idd)
+      .subscribe(data =>{
+        console.log(data);
+        this.bag=data;
+      });
+  }
+
+
+
+
 
 }
