@@ -9,6 +9,6 @@ const bagController = require('../controllers/bagController');
 router.get('/test', bagController.test);
 router.put('/:id/:id_product/addProduct', bagController.addProduct);
 router.get('/:id/getBagOfUser', bagController.getBagOfUser);
-router.put('/:id/:id_product/deleteProduct', bagController.deleteProduct);
+router.put('/:id/:id_product/:index/deleteProduct', bagController.deleteProduct);
 
 module.exports = router;
