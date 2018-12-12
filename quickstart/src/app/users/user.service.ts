@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, RequestOptions} from "@angular/http";
+import {Headers, Http, RequestOptions, RequestOptionsArgs} from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -41,8 +41,10 @@ export class UserService {
       .map(res => res.json());
   }
 
-  getUserByIdd(id: string): Observable<User> {
-    return this.http.get<User>('http://localhost:3000/users/getUser/'+id)
+  getUserById(id: any): Observable<User> {
+    return this.http.get<User>('http://localhost:3000/users/getUser/'+id);
   }
-
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }

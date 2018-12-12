@@ -3,7 +3,6 @@ export class User{
   _id?: any;
   surname: string;
   name: string;
-
   username: string;
   password: string;
   email:string;
@@ -13,7 +12,6 @@ export class User{
   houseNumber: string;
   province: string;
   postCode: string;
-
 
   constructor( surname: string,name: string, username: string, password: string, email: string, country: string, city: string, streetAddress: string, houseNumber: string, province: string, postCode: string) {
     this.name = name;

@@ -14,24 +14,25 @@ import {tokenKey} from "@angular/core/src/view";
 export class SignInComponent implements OnInit {
   loginUserData: User;
 
-  constructor( private _auth: AuthService, private  router: Router, private userService: UserService) {
+  constructor( private authService: AuthService, private  router: Router, private userService: UserService) {
     if(!this.loginUserData){
       this.loginUserData={};
     }
   }
+
   ngOnInit() {}
 
   loginUser() {
-    this._auth.loginUser(this.loginUserData)
+    this.authService.loginUser(this.loginUserData)
       .subscribe(
         (res) => {
-
-          this.router.navigate(['/']);  //po zalogowaniu przeniesie mnie tu
-          this.userService.setUserLoggedIn();
+          localStorage.setItem('token', res.token);
+          console.log(this.loginUserData);
           this.loginUserData=res;
           console.log(res);
-          console.log(this.loginUserData._id);
-        }, err=>console.log("cos poszlo zle 🙂")
+          this.router.navigate(['/']);
+          this.userService.setUserLoggedIn();
+        }, err=>console.log("Uuupps! Coś poszło źle 🙂")
       )
   }
 

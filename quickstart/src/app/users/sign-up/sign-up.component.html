@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form name="form" role="form" (ngSubmit)="registerUser()" #registerForm="ngForm" *ngIf="!success">
+        <form name="form" role="form" (ngSubmit)="registerUser(user)" #registerForm="ngForm" *ngIf="!success">
           <div class="form-group">
             <label class="form-control-label" for="email">Email</label>
             <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="user.email" minlength=5 maxlength=254 email required>

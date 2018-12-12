@@ -34,7 +34,7 @@ const routes: Routes = [
     path:"sign-up", component: SignUpComponent
   },
   {
-    path: 'account', component: AccountComponent
+    path: 'account', canActivate: [AuthGuard],component: AccountComponent
   },
   {
     path:"users/:name", component: UsersComponent

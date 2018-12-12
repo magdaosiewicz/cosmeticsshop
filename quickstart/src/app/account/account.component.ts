@@ -10,9 +10,14 @@ import {User} from "../users/user";
 export class AccountComponent implements OnInit {
   user: User;
 
-  constructor(private userService: UserService, private _auth: AuthService) {}
+  constructor(private userService: UserService, private authService: AuthService) {
+    if(!this.user){
+      this.user={};
+    }
+  }
+
   ngOnInit() {
-    this.userService.getUserByIdd('5bff03655d87fa51a025d808')  //trzeba zmienic, by bral id useraa nie na sztywno !!!!!!!!!!!!!!!!!!
+    this.userService.getUserById(this.user)  //bierze 1-go z listy
       .subscribe(data => {
         console.log(data);
         this.user = data;
@@ -20,7 +25,7 @@ export class AccountComponent implements OnInit {
   };
 
   editUser(user) {
-    this._auth.updateUser(user,user._id).subscribe(
+    this.authService.updateUser(user,user._id).subscribe(
       data => {
         this.user = data;
         console.log(data);
@@ -30,4 +35,3 @@ export class AccountComponent implements OnInit {
     );
   }
 }
-

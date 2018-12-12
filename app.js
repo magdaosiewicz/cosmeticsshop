@@ -28,8 +28,9 @@ const mongoose = require('mongoose');
 let dev_db_url = 'mongodb://ela:ela123@ds151533.mlab.com:51533/cosmeticsshop';
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.Promise = global.Promise;
+process.env.JWT_KEY = "secret"
 
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { useNewUrlParser: true },);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', function () {
@@ -56,26 +57,22 @@ app.use('/users', user);
 app.use('/orders', order);
 app.use('/bags', bag);
 app.use('/addresses', address);
-// <<<<<<< HEAD
 app.use('/images', image);
 
-
-// =======
 app.use(express.static(path.join(__dirname, 'quickstart')));
-// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
 
-// app.use((req, res, next) => {
-//     res.set({
-//         "Access-Control-Allow-Origin": "*",
-//         "Access-Control-Allow-Methods": "*",
-//         "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
-//     });
-//
-//     next();
-// });
-
-// <<<<<<< HEAD
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+);
+if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+}
+next();
+});
 // Create storage engine
 const storage = new GridFsStorage({
     url: dev_db_url,

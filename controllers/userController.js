@@ -2,7 +2,7 @@ const User = require('../models/userModel');
 const Bag = require('../models/bagModel');
 const Address = require('../models/addressModel');
 const mongoose = require("mongoose");
-
+const jwt = require('jsonwebtoken');
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
@@ -44,10 +44,19 @@ exports.userCreate = function (req, res) {
         orders: [{                                                                  //tez ma zaincializowan eod razu id a chcialam zeb ytylko kosz mial
         }]
     });
-    user.save();
-    return console.log(user);
-    res.json(user);
 
+    let userData = req.body;
+    User.findOne({email: userData.email}, (err, userf) => {
+        if(!userf){
+            user.save((registeredUser) => {
+                let payload ={subject: registeredUser}
+                let token=jwt.sign(payload,'secretKey');
+                return res.status(200).send({token});
+            })
+        }else {
+            return res.status(400).send('That email already exists!');
+        }
+    });
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -68,27 +77,30 @@ exports.getUsers = function (req, res) {
 exports.loginUser = function (req, res) {
     let userData = req.body;
     User.findOne({email: userData.email}, (err, user) => {
-        if (err) {
-            console.log(err)
+        if (err) {console.log(err);
         } else {
-            if (!user) {
-                res.status(401).json('Invalid Email');
-            } else if (user.password !== userData.password) {
-                res.status(401).json('Invalid Password');
-            }
-            else {
-                User.findOne((registeredUser) => {
-                    res.json(user)
-                });
-            }
+               if (!user) {
+                   res.status(401).json('Błędny Email');
+               } else if (user.password !== userData.password) {
+                   res.status(401).json('Błędne haslo');
+               } else {
+                   User.findOne((registeredUser)=> {
+                       let payload = {subject: registeredUser};
+                       let token = jwt.sign(payload, 'secretKey');
+                       res.status(200).send({token})
+                   })
+               }
         }
-    });
+    })
 };
 
 exports.getUserId = function (req, res) {
-    User.findById(req.params.id, req.body).then(function (user) {
-        //   User.findOne({id: req.params._id}).then(function (user) {
-        res.json(user)
+    User.findOne({id: req.params._id}).then(function (user) {
+        res.send(user)
     });
-    // })
 };
+// };exports.getUserId = function (req, res) {
+//     User.findById(req.params.id, req.body).then(function (user) {
+//         res.json(user)
+//     });
+// };

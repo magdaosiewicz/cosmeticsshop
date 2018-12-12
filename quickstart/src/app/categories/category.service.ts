@@ -63,8 +63,8 @@ export class CategoryService {
   addProductToTheBag(id: string, id_product: string, bag: Bag): Observable<Bag>{
     return this.http.put<Bag>('http://localhost:3000/bags/'+id+'/'+id_product+'/addProduct', bag)
   }
-  removeProduct(id: string, id_product: string, bag: Bag): Observable<Bag>{
-    return this.http.put<Bag>('http://localhost:3000/bags/'+id+'/'+id_product+'/deleteProduct', bag)
+  removeProduct(id: string, id_product: string, index: number ,bag: Bag): Observable<Bag>{
+    return this.http.put<Bag>('http://localhost:3000/bags/'+id+'/'+id_product+'/'+index+'/deleteProduct', bag)
   }
 
 

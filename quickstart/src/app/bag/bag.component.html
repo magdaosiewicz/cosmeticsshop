@@ -1,20 +1,35 @@
 
-  <div *ngFor="let p of bag.products; index as i">
-   <div class="name">  {{p.nameOfProduct}}     <button  (click)="deleteProduct(p._id)">  DELETE </button> </div>
-    <!--o jeden za duzo chyba si eorbi delte czy cos-->
+
+  <div class="cart">
+    <h3><span class="shopper"></span> Zawartość Twojej torebki</h3>
+    <div class="table">
+      <!--NAGŁÓWKI-->
+      <div class="layout-inline row th">
+        <div class="col col-pro">Produkt</div>
+        <div class="col col-qty align-center">Ilość</div>
+        <div class="col">Cena</div>
+        <div class="col col-pro">Akcje</div>
+      </div>
+      <div *ngFor="let p of bag.products; index as i">
+      <div class="layout-inline row">
+        <div class="col  layout-inline">
+          <p>{{p.nameOfProduct}}</p>
+        </div>
+
+        <div class="col col-qty layout-inline">
+          <input type="numeric" value="1" />
+        </div>
+        <div class="col"><p>{{p.price}} zł</p></div>
+        <!--PRZYCISK USUWANIA-->
+        <div class="product-removal col">
+          <button class="remove-product " (click)="deleteProduct(p._id, i)"   > Usuń <i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      </div>
+      <!--KOŃCOWA CENA-->
+        <div class="row layout-inline">
+          <div class="col"><p class="p2">Do zapłaty:  {{bag.cost}} zł </p></div>
+
+    </div>
   </div>
-  <div *ngFor="let p of bag.products">
-    <div class="price"> price:  {{p.price}} </div>
   </div>
-  <div *ngFor="let p of bag.products">
-    <div class="about">  {{p.aboutProduct}} </div>
-  </div>
-
-
-
-    CALKOWITY KOSZT: <h4> {{bag.cost}} </h4>
-  <!--<div> {{user1.email}} </div>-->
-
-
-
-
