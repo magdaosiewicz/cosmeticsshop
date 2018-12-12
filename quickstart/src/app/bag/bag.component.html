@@ -1,23 +1,34 @@
 
-  <div *ngFor="let p of bag.products">
+  <div class="cart">
+    <h3><span class="shopper"></span> Zawartość Twojej torebki</h3>
+    <div class="table">
+      <!--NAGŁÓWKI-->
+      <div class="layout-inline row th">
+        <div class="col col-pro">Produkt</div>
+        <div class="col col-qty align-center">Ilość</div>
+        <div class="col">Cena</div>
+        <div class="col col-pro">Akcje</div>
+      </div>
+      <div *ngFor="let p of bag.products">
+      <div class="layout-inline row">
+        <div class="col  layout-inline">
+          <p>{{p.nameOfProduct}}</p>
+        </div>
 
+        <div class="col col-qty layout-inline">
+          <input type="numeric" value="1" />
+        </div>
+        <div class="col"><p>{{p.price}} zł</p></div>
+        <!--PRZYCISK USUWANIA-->
+        <div class="product-removal col">
+          <button class="remove-product "> Usuń <i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      </div>
+      <!--KOŃCOWA CENA-->
+        <div class="row layout-inline">
+          <div class="col"><p class="p2">Do zapłaty:  {{bag.cost}} zł </p></div>
 
-   <p>  {{p.nameOfProduct}} </p>
-
-
-</div>
-
-
-    <div> {{bag.cost}} </div>
-  <div> {{user1.email}} </div>
-
-
-
-
-  <div *ngFor="let u of user | async">
-
-
-
-
-</div>
-
+    </div>
+  </div>
+  </div>
