@@ -4,8 +4,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import {Observable} from "rxjs/Observable";
 import {User} from "./user";
-import {Observable} from "rxjs/Rx";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -13,14 +13,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UserService {
 
-  private isUserLoggedIn;
-  constructor(private http: HttpClient) {this.isUserLoggedIn =false;}
-  private _registerUrl = "http://localhost:3000/users/create";
+  public isUserLoggedIn;
 
-  // registerUser(user:User){
-  //   return this.http.post<User>(this._registerUrl, user)
-  // }
-  //retriving user
+  constructor(private _http: Http,private http: HttpClient) {
+    this.isUserLoggedIn =false;
+  }
+
+//  retriving user
   setUserLoggedIn(){
     this.isUserLoggedIn = true;
   }
@@ -28,12 +27,24 @@ export class UserService {
     return this.isUserLoggedIn;
   }
 
-  getUserById(id: User): Observable<User>{
-    return this.http.get<User>('http://localhost:3000/users/getUser/'+id)
+  getUsers() {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*', ///Access-Control-Allow-Origin – informuje, że z podanej domeny można wykonać żądanie XHR,
+      'Access-Control-Allow-Credentials': 'true'
+    });
+
+    let options = new RequestOptions({
+      headers: headers
+    });
+    return this._http.get('http://localhost:3000/users/getUsers', options)
+      .map(res => res.json());
   }
 
-  getID(){
-    return localStorage.getItem('id');
+  getUserById(id: any): Observable<User> {
+    return this.http.get<User>('http://localhost:3000/users/getUser/'+id);
   }
-
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }

@@ -10,27 +10,30 @@ import {UserService} from "../user.service";
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  user: User;
+  user:User;
+  success: boolean;
 
-  constructor(private _auth: AuthService, private router: Router , private  userService: UserService) {
+  constructor(private authService: AuthService) {
     if(!this.user){
       this.user={};
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.success = false;
+  }
 
-  registerUser(user) {
-    this._auth.registerUser(user).subscribe(
+  registerUser() {
+    this.authService.registerUser(this.user).subscribe(
       res => {
-        // localStorage.setItem('id',res.username);
-        console.log(res);
+        this.success = true;
+        localStorage.setItem('token', res.token);
+        console.log(this.user);
         this.user = res;
-        // console.log( this.userService.getID())
+        console.log(res);
       },
       error =>console.log(error)
     );
   }
 
 }
-

@@ -57,13 +57,9 @@ app.use('/users', user);
 app.use('/orders', order);
 app.use('/bags', bag);
 app.use('/addresses', address);
-// <<<<<<< HEAD
 app.use('/images', image);
 
-
-// =======
 app.use(express.static(path.join(__dirname, 'quickstart')));
-// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -77,18 +73,6 @@ if (req.method === "OPTIONS") {
 }
 next();
 });
-// app.use((req, res, next) => {
-//     res.set({
-//         "Access-Control-Allow-Origin": "*",
-//         "Access-Control-Allow-Methods": "*",
-//         "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
-//     });
-//
-//     next();
-// });
-
-// <<<<<<< HEAD
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Create storage engine
 const storage = new GridFsStorage({
     url: dev_db_url,
@@ -111,10 +95,7 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 
-//
-//
-// =======
-// >>>>>>> 4bfedbd8ae8f2ebb990639148b4aa7271f601425
+
 let port = 3000;
 
 app.listen(port, () => {

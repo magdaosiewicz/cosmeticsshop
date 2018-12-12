@@ -7,7 +7,9 @@ const ProductSchema = new Schema({
     aboutProduct: {type: String, required: false, max: 1000},
     ingredients: {type: String, required: false},
     recommendation: {type: String, required: false},
-    price: {type: Number, required: false}
+    price: {type: Number, required: false},
+    category: {type: Schema.Types.ObjectId, required: false, ref: "Category"}
+ //   productImage: { type: String, required: true }
 
 });
 

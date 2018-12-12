@@ -4,10 +4,14 @@ import { Router} from "@angular/router";
 import {UserService} from "./users/user.service";
 import {User} from "./users/user";
 import {Observable} from "rxjs/Rx";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
+
+  // private user = new BehaviorSubject<User>({});
+  // user$ = this.user.asObservable();
 
   constructor(private http: HttpClient, private userService: UserService, private router: Router) {}
   private _registerUrl = "http://localhost:3000/users/create";
@@ -22,7 +26,7 @@ export class AuthService{
     return this.http.post<any>(this._loginUrl, user);
   }
 
-   loggedIn(){
+  loggedIn(){
     return !!localStorage.getItem('token');
   }
 

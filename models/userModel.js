@@ -2,12 +2,11 @@ const Product = require('../models/productModel');
 const mongoose = require('mongoose');
 const Bag = require('../models/bagModel');
 const Schema = mongoose.Schema;
-var bcrypt= require('bcrypt');
 mongoose.set('useCreateIndex', true);
 
 const OrderSchema = new Schema({
- // user: Schema.Types.ObjectId,
-  //  totalCost:{type : "Number"},
+    // user: Schema.Types.ObjectId,
+    //  totalCost:{type : "Number"},
     dateOfOrder: {type: "String"},
     dateOfRealisation: {type: "String"},
     meansOfPayment: {type: "String"}
@@ -15,7 +14,6 @@ const OrderSchema = new Schema({
 });
 
 const UserSchema  = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     name : {type : String},
     email: {type : String, unique: true, required: true,match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/},
     surname : {type: String},
@@ -25,5 +23,6 @@ const UserSchema  = new Schema({
     bag: {type: Schema.Types.ObjectId, ref: "Bag"},
     address: {type: Schema.Types.ObjectId, required: false, ref: "Address"}
 });
+
 
 module.exports = mongoose.model('Users', UserSchema);

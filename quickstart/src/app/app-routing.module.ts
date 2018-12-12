@@ -12,6 +12,7 @@ import {SignInComponent} from "./users/sign-in/sign-in.component";
 import {HomeComponent} from "./home/home.component";
 import {AuthGuard} from "./auth.guard";
 import {navbarRoute} from "./navbar/navbar.route";
+import {BagComponent} from "./bag/bag.component";
 const LAYOUT_ROUTES = [navbarRoute]
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'category-detail/:nameOfCategory', component: CategoryDetailComponent},
   { path: 'category-detail/:nameOfCategory/:productId', component: ProductDetailComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'bag', component: BagComponent},
   {
     path: '', component: HomeComponent
   },
@@ -32,7 +34,7 @@ const routes: Routes = [
     path:"sign-up", component: SignUpComponent
   },
   {
-    path: 'account', canActivate: [AuthGuard], component: AccountComponent
+    path: 'account', canActivate: [AuthGuard],component: AccountComponent
   },
   {
     path:"users/:name", component: UsersComponent

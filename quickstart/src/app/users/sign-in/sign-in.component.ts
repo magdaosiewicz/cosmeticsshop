@@ -12,44 +12,29 @@ import {tokenKey} from "@angular/core/src/view";
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  // loginUserData= {};
   loginUserData: User;
 
-  constructor( private _auth: AuthService, private  router: Router, private userService: UserService) {
+  constructor( private authService: AuthService, private  router: Router, private userService: UserService) {
     if(!this.loginUserData){
       this.loginUserData={};
     }
   }
+
   ngOnInit() {}
 
   loginUser() {
-    this._auth.loginUser(this.loginUserData)
+    this.authService.loginUser(this.loginUserData)
       .subscribe(
         (res) => {
-        console.log(res);
-        this.router.navigate(['/']);  //po zalogowaniu przeniesie mnie tu
-        this.userService.setUserLoggedIn();
-        this.loginUserData=res;
-        console.log(this.loginUserData)
-        }, err=>console.log("cos poszlo zle :)")
+          localStorage.setItem('token', res.token);
+          console.log(this.loginUserData);
+          this.loginUserData=res;
+          console.log(res);
+          this.router.navigate(['/']);
+          this.userService.setUserLoggedIn();
+        }, err=>console.log("Uuupps! Coś poszło źle 🙂")
       )
   }
 
 
-  // loginUser() {
-  //
-  //
-  //   this._auth.loginUser(this.user).subscribe(data => {
-  //     console.log(data);
-  //     // if(data.success) {
-  //       this._auth.storeUserData(data.token, data.user);
-  //       console.log(this.user);
-  //       // this.flashMessage.show(data.user.name + ' logged in Successfully', {cssClass: 'alert-success', timeout: 5000});
-  //       this.router.navigate(['/account']);
-  //     // } else {
-  //     //   // this.flashMessage.show('Something went wrong, Please try again', {cssClass: 'alert-danger', timeout: 5000});
-  //     //   this.router.navigate(['/sign-in']);
-  //     // }
-  //   })
-  // }
 }
