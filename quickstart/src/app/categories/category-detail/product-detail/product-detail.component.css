@@ -17,10 +17,10 @@
 }
 .additionalInformation{
   display: block;
-  background-color: gray;
+  background-color: #f7f7f7;
   width: 100%;
   clear: both;
-  height: 100px;
+  height: 80px;
 
 }
 p{

@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product;
   productsOfCategoryInput: Product[];
   bag: Bag;
-  idd='5c0eca0c8ba45428e8257fa4';
+  idd='5c0ed7751296070540eb1a80';
 
   constructor(private categoryService: CategoryService, private  route: ActivatedRoute) {
 
